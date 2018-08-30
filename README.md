@@ -4,7 +4,7 @@ This set of tools and document provides a simpler and 21st century way of develo
 
 With the introduction of JavaScript Chaincode, VSCode plays a more important role as a full stack development tool for HL fabric. The focus of this documnet is to build:
 
-1. An enviornmonet for chaincode development. This Environment was derived 
+1. An enviornmonet for chaincode development. This Environment was derived from Basic Network of Hyperledger Fabric 1.1, and added DEV mode. The Fabric 1.1 DEV mode does not support CouchDB.
 2. Focus on Javascript which has no debugging limitation, while using Eclipse for GO development, old fashioned way.
 
 
@@ -21,25 +21,29 @@ With the introduction of JavaScript Chaincode, VSCode plays a more important rol
 #### Configuration ####
 
 You need Git on Mac, I assume you have it
-
+```
 * git clone https://github.com/shsedghi/HL_Fabric_IDE
 * cd HL_Fabric_IDE
-
+```
 The follwing steps build s the environment. if your network is slow, the channel creation may fail, you need to redo this step.
-> * ./start_dev.sh
-
+```
+ * ./start_dev.sh
+```
 After succesful start you can stop the environment with
-
-> * ./stop_dev_sh
-
+```
+ * ./stop_dev_sh
+```
 You can delete the whole environment with (wtach out if you have other HL images)
+```
+ *  ./teardown_dev.sh
+```
+After successful start up:
+```
+ * docker ps
+```
+![](images/Docker_PS.png)
 
-> *  ./teardown_dev.sh
-
-> * docker ps
-
-[1]: figures/Docker_PS.png 
-
+In this stage we copy the local MSP from chaincode Docker into MAC
 
 
 
