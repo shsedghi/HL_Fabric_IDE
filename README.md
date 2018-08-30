@@ -74,7 +74,7 @@ npm install
 * Open ~/goPath
 * Browse to src/chaincode/chaincode_example02//node/
 
-![](images/VSCode.png)
+![](images/VSCode.png =250x250)
 
 * Double click on chaincode_example02.js to open 
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
