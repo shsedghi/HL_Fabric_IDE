@@ -38,7 +38,7 @@ You can delete the whole environment with (wtach out if you have other HL images
 
 > * docker ps
 
-[1]: /figures/Docker_PS.png 
+[1]: figures/Docker_PS.png 
 
 
 
