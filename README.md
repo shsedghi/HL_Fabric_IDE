@@ -21,9 +21,9 @@ With the introduction of JavaScript Chaincode, VSCode plays a more important rol
 
 * Install [pre-requsites](https://hyperledger-fabric.readthedocs.io/en/release-1.1/prereqs.html) on your Mac. Note that GoLang 1.9 breaks with Fabric 1.1 due to docker go libraries which are compiled with  goLang 10.x.
 
-* You need [Git](https://git-scm.com/download/mac) on Mac, if you do not have it installed.
+* You need [Git](https://git-scm.com/download/mac) on Mac, if it is not already installed.
 
-* Install [Visual Studio Code](https://code.visualstudio.com/), if you do not have it installed.
+* Install [Visual Studio Code](https://code.visualstudio.com/), if it is not already installed.
 
 
 #### Configuration ####
@@ -36,7 +36,7 @@ cd HL_Fabric_IDE
 ```
 ./start_dev.sh
 ```
-* After succesful start you can stop the environment with
+* After succesful start you can stop, and clean the environment with. Any changes to docker containers will be lost
 ```
  ./stop_dev_sh
 ```
@@ -56,13 +56,15 @@ cd HL_Fabric_IDE
 docker cp chaincode:/opt/gopath ~/gopath
 docker cp chaincode:/etc/hyperledger/msp /etc/hyperledger/msp
 ```
-
+* Copy chaincode folder to Cli Docker
+```
+docker cp $GOPATH/src/chaincode cli:/opt/gopath/src/chaincode
+```
 * Modify your .bash_profile and include the following environment varaibles. You need to logout and log back in for the chages take effect.
 ```
 GOPATH=~/goPath
 CORE_PEER_LOCALMSPID=DEFAULT
-CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp
-export  GOPATH CORE_PEER_LOCALMSPID CORE_PEER_MSPCONFIGPATH
+export  GOPATH CORE_PEER_LOCALMSPID 
 ```
 
 * Build the required libraries for Java script chaincode02 by:
@@ -78,14 +80,26 @@ hirarchy should look like this [picture](images/VSCode.png)
 * Double click on chaincode_example02.js to open
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
 * save the Config file
-* Start the chancode from File &rightarrow; Debug &rightarrow; Strat Debugging. Debug console will show as follows:
+* Start the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging. Debug console will show as follows:
 ![Debug Console](images/Debug_Console.png)
+### Install and Instantiate Chaincode
+Chaincode Install in DEV mode is only used for Metadat creation (including CouchDB indexes) but is required even if it is started manually
 
+```
+docker exec -it cli bash
+peer chaincode install -n mycc -v 0 -l node -p /opt/gopath/src/chaincode/chaincode_example02/node
+peer chaincode instantiate -n mycc -v 0 -l node  -c '{"Args":["init","a", "100", "b","200"]}' -C mychannel
+```
+### Run a Query
+```
+peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
 
+```
+if you get the following error, during instantiate, it means your network start was not fast enough (60 seconds) to create the channel. Stop and start the neworks using scripts and repeat the configuraton steps.
 
-
-
-
+```
+Error: Error getting (mychannel) orderer endpoint: error endorsing GetConfigBlock: rpc error: code = Unknown desc = chaincode error (status: 500, message: "GetConfigBlock" request failed authorization check for channel [mychannel]: [Failed to get policy manager for channel [mychannel]])
+```
 
 
 
