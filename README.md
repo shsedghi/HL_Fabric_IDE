@@ -73,13 +73,13 @@ npm install
 * Open VSCode 
 * Open ~/goPath
 * Browse to src/chaincode/chaincode_example02//node/
-
-![](images/VSCode.png)
+hirarchy should look like this [picture](images/VSCode.png)
 
 * Double click on chaincode_example02.js to open
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
 * save the Config file
-* Start the chancode from File &rightarrow; Debug &rightarrow; Strat Debugging
+* Start the chancode from File &rightarrow; Debug &rightarrow; Strat Debugging. Debug console will show as follows:
+![Debug Console](images/Debug_Console.png)
 
 
 
