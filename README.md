@@ -21,9 +21,9 @@ With the introduction of JavaScript Chaincode, VSCode plays a more important rol
 
 * Install [pre-requsites](https://hyperledger-fabric.readthedocs.io/en/release-1.1/prereqs.html) on your Mac. Note that GoLang 1.9 breaks with Fabric 1.1 due to docker go libraries which are compiled with  goLang 10.x.
 
-* You need [Git](https://git-scm.com/download/mac) on Mac, if you do not have it.
+* You need [Git](https://git-scm.com/download/mac) on Mac, if you do not have it installed.
 
-* Install [Visual Studio Code](https://code.visualstudio.com/), if you do not have it.
+* Install [Visual Studio Code](https://code.visualstudio.com/), if you do not have it installed.
 
 
 #### Configuration ####
@@ -76,8 +76,10 @@ npm install
 
 ![](images/VSCode.png)
 
-* Double click on chaincode_example02.js to open 
+* Double click on chaincode_example02.js to open
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
+* save the Config file
+* Start the chancode from File &rightarrow; Debug &rightarrow; Strat Debugging
 
 
 

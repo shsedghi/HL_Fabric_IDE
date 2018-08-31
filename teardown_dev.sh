@@ -14,6 +14,6 @@ docker-compose -f docker-compose-couch_devmode.yml kill && docker-compose -f doc
 rm -f ~/.hfc-key-store/*
 
 # remove chaincode docker images
-docker rmi $(docker images |grep 'hyperledger/')
+docker rmi $(docker images  |grep 'hyperledger/')
 
 # Your system is now clean
