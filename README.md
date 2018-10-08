@@ -97,7 +97,7 @@ Error: Error getting (mychannel) orderer endpoint: error endorsing GetConfigBloc
 peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
 ```
 
-### Modifiy the code
+### Modify the code
 Alternatively you can stop debugging, modify the  code and restart the app without redeploying the chaincode. DEV mode allows modifiying the chaincode indefinitly without redeplying it. The following will allow access to X509 certificate of the chaincode caller:
 
 Open Terminal window in VSCode View &rightarrow; Terminal
