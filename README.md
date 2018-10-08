@@ -1,6 +1,6 @@
 # Hyperledger Fabric Application Development with an IDE
 ## Background
-This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellegi. Within this huge gap Jetbain dropped the support of GOLang development of the Intelleji Community edition of Intelligi and introduced a product called GOland which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO V10.x lacks debugging capabilities (missing required debugging artifacts) which breaks go debugging in VSCode. 
+This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellij. Within this huge gap Jetbain dropped the support of GOLang development of the Intellij Community edition of Intelligi and introduced a product called GOLand which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO 1.10.x (and so far (GO 1.11.x) breaks when trying to debug GO in VSCode. 
 
 With the introduction of JavaScript Chaincode, VSCode plays a more important role as a full stack development tool for HL fabric. The focus of this documnet is to build:
 
@@ -112,7 +112,9 @@ npm install x509
 *  Restart the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging
 *  Rerun the query from the cli command line
 
+# Running GOLang chaincode in Eclicps
 
+TBD
 
 
 
