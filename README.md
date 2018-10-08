@@ -1,10 +1,10 @@
 # Hyperledger Fabric Application Development with an IDE
 ## Background
-This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellegi. Within this huge gap Jetbain dropped the support of GOLang development in Community edition of Intelligi and introduced a product called Gland which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO V10.x lacks debugging capabilities (missing required debugging artifacts) which breaks go debugging in VSCode. 
+This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellegi. Within this huge gap Jetbain dropped the support of GOLang development of the Intelleji Community edition of Intelligi and introduced a product called GOland which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO V10.x lacks debugging capabilities (missing required debugging artifacts) which breaks go debugging in VSCode. 
 
 With the introduction of JavaScript Chaincode, VSCode plays a more important role as a full stack development tool for HL fabric. The focus of this documnet is to build:
 
-1. An enviornmonet for chaincode development. This Environment was derived from Basic Network of Hyperledger Fabric 1.1, and added DEV mode. The Fabric 1.1 DEV mode does not support CouchDB.
+1. An enviornmonet for chaincode development. This Environment was derived from Basic Network of Hyperledger Fabric 1.1 which supports CouchDB, and added DEV mode. The Fabric 1.1 DEV mode does not support CouchDB and uses LevelDB instead.
 2. Focus on Javascript which has no debugging limitation, while using Eclipse for GO development, old fashioned way.
 
 
@@ -56,10 +56,6 @@ cd HL_Fabric_IDE
 docker cp chaincode:/opt/gopath ~/gopath
 docker cp chaincode:/etc/hyperledger/msp /etc/hyperledger/msp
 ```
-* Copy chaincode folder to Cli Docker
-```
-docker cp $GOPATH/src/chaincode cli:/opt/gopath/src/chaincode
-```
 * Modify your .bash_profile and include the following environment varaibles. You need to logout and log back in for the chages take effect.
 ```
 GOPATH=~/goPath
@@ -75,7 +71,7 @@ npm install
 * Open VSCode 
 * Open ~/goPath
 * Browse to src/chaincode/chaincode_example02//node/
-hirarchy should look like this [picture](images/VSCode.png)
+hirarchy should look like this ![picture](images/VScode.png)
 
 * Double click on chaincode_example02.js to open
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
@@ -100,6 +96,22 @@ if you get the following error, during instantiate, it means your network start 
 ```
 Error: Error getting (mychannel) orderer endpoint: error endorsing GetConfigBlock: rpc error: code = Unknown desc = chaincode error (status: 500, message: "GetConfigBlock" request failed authorization check for channel [mychannel]: [Failed to get policy manager for channel [mychannel]])
 ```
+
+### modifiy the code
+Alternatively you can stop debugging, modify the  code and restart the app without redeploying the chaincode. DEV mode allows modifiying the chaincode indefinitly without redeplying it. The following will allow access to X509 certificate of the chaincode caller:
+
+Open Terminal window in VSCode View &rightarrow; Terminal
+
+```
+cd $GOPATH/src/chaincode/chaincode_example02/node
+npm install x509
+```
+
+* replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file.
+
+*  Restart the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging
+
+
 
 
 
