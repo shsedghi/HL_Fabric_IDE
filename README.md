@@ -1,10 +1,10 @@
 # Hyperledger Fabric Application Development with an IDE
 ## Background
-This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellij. Within this huge gap Jetbain dropped the support of GOLang development of the Intellij Community edition of Intelligi and introduced a product called GOLand which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO 1.10.x (and so far (GO 1.11.x) breaks when trying to debug GO in VSCode. 
+This set of tools and document provides a simpler and 21st century way of developing a blockchain application. This is a continuation of a work that was managed in HL fabric 0.5 and 0.6 with Eclipse and Jetbrain Intellij. Within this huge gap Jetbain dropped the support of GOLang development of the Intellij Community edition of Intelligi and introduced a product called GOLand which looks expensive to deploy for many open source developers. Unfortunately Eclipse support for GOClipse has not improved since, which originally triggered the use of a Jetbrain Product. During this gap Microsoft was able to fill the gap in GO development in Visual Studio Code, however GO 1.10.x and so far GO 1.11.x both  break when trying to debug GO in VSCode. 
 
 With the introduction of JavaScript Chaincode, VSCode plays a more important role as a full stack development tool for HL fabric. The focus of this documnet is to build:
 
-1. An enviornmonet for chaincode development. This Environment was derived from Basic Network of Hyperledger Fabric 1.1 which supports CouchDB, and added DEV mode. The Fabric 1.1 DEV mode does not support CouchDB and uses LevelDB instead.
+1. An enviornmonet for chaincode development. This Environment was derived from <b>Basic Network </b>of Hyperledger Fabric 1.1 which supports CouchDB, and added DEV mode. The native Fabric 1.1 DEV mode does not support CouchDB and uses LevelDB instead.
 2. Focus on Javascript which has no debugging limitation, while using Eclipse for GO development, old fashioned way.
 
 
