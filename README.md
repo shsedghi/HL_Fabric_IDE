@@ -79,17 +79,12 @@ hirarchy should look like this [picture](images/VScode.png)
 * Start the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging. Debug console will show as follows:
 ![Debug Console](images/Debug_Console.png)
 ### Install and Instantiate Chaincode
-Chaincode Install in DEV mode is only used for Metadat creation (including CouchDB indexes) but is required even if it is started manually
+Chaincode Install in DEV mode is only used for Metadata creation (including CouchDB indexes) but is required even if it is started manually
 
 ```
 docker exec -it cli bash
 peer chaincode install -n mycc -v 0 -l node -p /opt/gopath/src/chaincode/chaincode_example02/node
 peer chaincode instantiate -n mycc -v 0 -l node  -c '{"Args":["init","a", "100", "b","200"]}' -C mychannel
-```
-### Run a Query
-```
-peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
-
 ```
 if you get the following error, during instantiate, it means your network start was not fast enough (60 seconds) to create the channel. Stop and start the neworks using scripts and repeat the configuraton steps.
 
@@ -97,7 +92,12 @@ if you get the following error, during instantiate, it means your network start 
 Error: Error getting (mychannel) orderer endpoint: error endorsing GetConfigBlock: rpc error: code = Unknown desc = chaincode error (status: 500, message: "GetConfigBlock" request failed authorization check for channel [mychannel]: [Failed to get policy manager for channel [mychannel]])
 ```
 
-### modifiy the code
+### Run a Query
+```
+peer chaincode query -C mychannel -n mycc -c '{"Args":["query","a"]}'
+
+
+### Modifiy the code
 Alternatively you can stop debugging, modify the  code and restart the app without redeploying the chaincode. DEV mode allows modifiying the chaincode indefinitly without redeplying it. The following will allow access to X509 certificate of the chaincode caller:
 
 Open Terminal window in VSCode View &rightarrow; Terminal
