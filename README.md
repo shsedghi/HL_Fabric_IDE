@@ -71,7 +71,7 @@ npm install
 * Open VSCode 
 * Open ~/goPath
 * Browse to src/chaincode/chaincode_example02//node/
-hirarchy should look like this ![picture](images/VScode.png)
+hirarchy should look like this [picture](images/VScode.png)
 
 * Double click on chaincode_example02.js to open
 * From File &rightarrow; Debug &rightarrow; Open Configuration and modify or replace it as this [Config File](lunch_js.json) 
@@ -110,6 +110,7 @@ npm install x509
 * replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file.
 
 *  Restart the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging
+*  Rerun the query from the cli command line
 
 
 

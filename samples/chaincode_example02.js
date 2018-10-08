@@ -7,7 +7,6 @@
 const shim = require('fabric-shim');
 const util = require('util');
 const x509 = require('x509');
-const map = {};
 
 var Chaincode = class {
 
@@ -118,11 +117,15 @@ var Chaincode = class {
     if (args.length != 1) {
       throw new Error('Incorrect number of arguments. Expecting name of the person to query')
     }
+    //get the idtentity object
+    let signingId = stub.getCreator();
+    //extract cert bytes
     let idBytes = signingId.getIdBytes().toBuffer();
     console.log(`cert is: ${idBytes.toString()}`);
+    // parse ther cert
     var subject = x509.getSubject(idBytes.toString());
     console.log(`subject CN is: ${subject.commonName}`);
-
+    // showing how to parse teh x509 certificate into a JSON object
     var parsedCertObject = x509.parseCert(idBytes.toString());
     console.log(`Parsed Cert is: ${JSON.stringify(parsedCertObject)}`);
 
