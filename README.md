@@ -50,11 +50,11 @@ cd HL_Fabric_IDE
 ```
 ![](images/Docker_PS.png)
 
-* In this stage we copy goPath and local MSP from Chaincode Docker into Mac. You need to setup  enevironemnt varaibles to point to both. 
+* In this stage we copy goPath from cli Docker into Mac. You need to setup  $GOPATH enevironemnt varaible to point to it. Modify ~/gopath here and in .bash_profile if you want it in a different place
 
 ```
-docker cp chaincode:/opt/gopath ~/gopath
-docker cp chaincode:/etc/hyperledger/msp /etc/hyperledger/msp
+docker cp cli:/opt/gopath ~/gopath
+
 ```
 * Modify your .bash_profile and include the following environment varaibles. You need to logout and log back in for the chages take effect.
 ```
@@ -107,7 +107,7 @@ cd $GOPATH/src/chaincode/chaincode_example02/node
 npm install x509
 ```
 
-* replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file.
+* replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file. This new sample shows how to extract varous attributes including Subject CN and the caller's Role from X509 certificte,
 
 *  Restart the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging
 *  Rerun the query from the cli command line

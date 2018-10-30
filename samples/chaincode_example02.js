@@ -7,6 +7,8 @@
 const shim = require('fabric-shim');
 const util = require('util');
 const x509 = require('x509');
+const ClientIdentity = shim.ClientIdentity;
+
 
 var Chaincode = class {
 
@@ -125,7 +127,12 @@ var Chaincode = class {
     // parse ther cert
     var subject = x509.getSubject(idBytes.toString());
     console.log(`subject CN is: ${subject.commonName}`);
-    // showing how to parse teh x509 certificate into a JSON object
+    //here shows how to check he role of the caller
+    // alternatively assertAttributeValue('hf.Type','xyz') returns true or false 
+    // where xyz is the role assiged to the caller during cert issuance
+    const  cid = new ClientIdentity(stub);
+    console.log(`Role is:  ${cid.getAttributeValue('hf.Type')}`);
+    // showing how to parse an  x509 certificate into a JSON object
     var parsedCertObject = x509.parseCert(idBytes.toString());
     console.log(`Parsed Cert is: ${JSON.stringify(parsedCertObject)}`);
 
