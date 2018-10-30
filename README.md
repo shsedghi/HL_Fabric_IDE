@@ -36,7 +36,8 @@ cd HL_Fabric_IDE
 ```
 ./start_dev.sh
 ```
-* After succesful start you can stop, and clean the environment with. Any changes to docker containers will be lost
+* After succesful start, you can stop and clean the environment with. Any changes to docker containers will be lost. 
+* __After the first start, restart the environment to make sure channels are created properly__.
 ```
  ./stop_dev_sh
 ```
@@ -107,7 +108,7 @@ cd $GOPATH/src/chaincode/chaincode_example02/node
 npm install x509
 ```
 
-* replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file. This new sample shows how to extract varous attributes including Subject CN and the caller's Role from X509 certificte,
+* replace or modify the chaincode_example02.js with the [sample](samples/chaincode_example02.js) provided and save the file. This new sample shows how to extract varous attributes including Subject's CN(Common Name) and the caller's Role from X509 certificte,
 
 *  Restart the chaincode from File &rightarrow; Debug &rightarrow; Strat Debugging
 *  Rerun the query from the cli command line
